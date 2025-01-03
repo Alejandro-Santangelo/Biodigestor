@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --configuration production",
+    "watch": "ng build --watch",
+    "test": "ng test",
+    "eject": "react-scripts eject"
+  }
+}

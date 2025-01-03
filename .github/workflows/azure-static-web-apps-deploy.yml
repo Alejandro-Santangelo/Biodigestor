@@ -22,10 +22,12 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install -g @angular/cli
+          npm install
 
       - name: Build
-        run: npm run build
+        run: ng build --configuration production
 
       - name: Deploy
         id: builddeploy
@@ -34,6 +36,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "build" # Directorio donde se encuentra tu build
-          api_location: "" # Deja vacío si no tienes API
-          output_location: "" # Deja vacío ya que el build ya está en app_location
+          app_location: "."               # Raíz del proyecto
+          output_location: "dist/biodigestor" # Directorio de salida del build
+          skip_app_build: false
